@@ -57,9 +57,10 @@ def salvar_tempo(tempo) -> None:
 if __name__ == '__main__':
     cidade_inputada = input("Digite a cidade")
     estado = input("Digite a sigla do Estado")
-    cidade_estado= cidade_inputada + "," + estado
+    cidade_estado = cidade_inputada + "," + estado
     print(cidade_estado)
-    url =f'https://api.hgbrasil.com/weather'.format(f'?key={config.api_key}&city_name={cidade_estado}')
+    url = (f'https://api.hgbrasil.com/weather' + (
+        f'?key={config.api_key}&city_name={cidade_inputada + "," + estado}'))
     resposta = requests.get(url)
     tempo(resposta)
     sqliteFactory = SqliteDAOFactory()
